@@ -1,12 +1,11 @@
 pipeline {
-    agent any
-    tools {
-  maven 'M2_HOME'
-}
 triggers {
   pollSCM '* * * * *'
 }
-
+    agent any
+    tools {
+  maven 'M2_HOME'
+    }
     stages {
         stage('maven package') {
             steps {
@@ -18,15 +17,10 @@ triggers {
                 stage('build') {
             steps {
                 sh 'mvn test'
-                
+
             }
         }
-                stage('test') {
-            steps {
-                echo 'test '
-
-                }
-        }
+               
                 stage('deploy') {
                 steps {
                 echo 'deploy dims'
